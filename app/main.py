@@ -2,7 +2,7 @@ from __future__ import annotations
 
 
 class Animal:
-    alive = []
+    alive: list[Animal] = []
 
     def __init__(
             self,
@@ -33,7 +33,7 @@ class Herbivore(Animal):
 class Carnivore(Animal):
     @staticmethod
     def bite(herbivore: Herbivore) -> None:
-        if not herbivore.hidden and isinstance(herbivore, Herbivore) :
+        if isinstance(herbivore, Herbivore) and not herbivore.hidden:
             herbivore.health -= 50
 
         if herbivore.health <= 0:
